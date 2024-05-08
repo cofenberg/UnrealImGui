@@ -14,6 +14,7 @@
 #include "Utilities/Arrays.h"
 #include "VersionCompatibility.h"
 
+#include <UnrealClient.h>
 #include <Engine/Console.h>
 #include <Engine/GameViewportClient.h>
 #include <Engine/LocalPlayer.h>

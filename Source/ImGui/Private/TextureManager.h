@@ -7,6 +7,7 @@
 #include <UObject/WeakObjectPtr.h>
 
 
+class UTexture;
 class UTexture2D;
 
 // Index type to be used as a texture handle.
