@@ -151,6 +151,9 @@ void SImGuiWidget::Tick(const FGeometry& AllottedGeometry, const double InCurren
 	UpdateTransparentMouseInput(AllottedGeometry);
 	HandleWindowFocusLost();
 	UpdateCanvasSize();
+
+	// Ensure "SImGuiWidget::OnPaint()" gets called each tick
+	Invalidate(EInvalidateWidget::Paint);
 }
 
 FReply SImGuiWidget::OnKeyChar(const FGeometry& MyGeometry, const FCharacterEvent& CharacterEvent)
