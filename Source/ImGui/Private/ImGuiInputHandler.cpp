@@ -349,11 +349,14 @@ void UImGuiInputHandler::Initialize(FImGuiModuleManager* InModuleManager, UGameV
 	}
 
 #if WITH_EDITOR
-	StopPlaySessionCommandInfo = FInputBindingManager::Get().FindCommandInContext("PlayWorld", "StopPlaySession");
-	if (!StopPlaySessionCommandInfo.IsValid())
+	if (GIsEditor && GIsPlayInEditorWorld)
 	{
-		UE_LOG(LogImGuiInputHandler, Warning, TEXT("Couldn't find 'StopPlaySession' in context 'PlayWorld'. ")
-			TEXT("PIE feature allowing execution of stop command in ImGui input mode will be disabled."));
+		StopPlaySessionCommandInfo = FInputBindingManager::Get().FindCommandInContext("PlayWorld", "StopPlaySession");
+		if (!StopPlaySessionCommandInfo.IsValid())
+		{
+			UE_LOG(LogImGuiInputHandler, Warning, TEXT("Couldn't find 'StopPlaySession' in context 'PlayWorld'. ")
+				TEXT("PIE feature allowing execution of stop command in ImGui input mode will be disabled."));
+		}
 	}
 #endif // WITH_EDITOR
 }
